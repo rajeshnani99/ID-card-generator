@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .main-box {
+        background-color: #4047f0;
+        border: 1px solid;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+    }
+
+    .flex-container {
+        display: flex;
+        color: black;
+        font: 20px helventica, arial;
+    }
+
+    .flex-child {
+        flex: 1;
+        background-color: white;
+
+
+    }
+
+    .flex-child:first-child {
+        margin-right: 0px;
+
+    }
+
+    input {
+        border-radius: 5px;
+    }
+
+    .content {
+        width: 200px;
+        height: 150px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-right: 50px;
+        padding-right: 100px;
+        margin-left: 150px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    .main-image {
+        background-image: linear-gradient(#4047f0, #8f94fb);
+        border-radius: 10px;
+
+    }
+
+    #imgDisplayed1 {
+        width: 50px;
+    }
+
+    #imgDisplayed {
+
+        width: 65px;
+        border-radius: 10px;
+        margin-top: 40px;
+    }
+
+
+
+    .data-gen {
+        font: 10px helventica, arial;
+    }
+
+
+
+    .headline h1,
+    .headline p {
+
+        display: inline-block;
+        margin-top: 50px;
+        padding: 5px;
+        vertical-align: bottom;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 10px;
+        line-height: 20px;
+    }
+
+    .headline h1 {
+        font-weight: bold;
+        margin-top: 20px;
+        /* text-align: center; */
+        display: inline-block;
+        font-size: 10px;
+        line-height: 15x;
+        margin: 0px;
+        text-align: justify;
+
+
+    }
+
+    .headline p {
+
+        font-weight: bold;
+        display: inline;
+        font-size: 10px;
+        line-height: 15px;
+        margin: 0px;
+    }
+</style>
+
+<body>
+    <div class="main-box">
+        <h1>ID Card Generator</h1>
+        <div class="flex-container">
+
+            <div class="flex-child magenta">
+                <form>
+                    <h3>Enter Student Details</h3>
+                    <label>Enter Name :</label>
+                    <br>
+
+                    <input type="text" id="EN">
+                    <br>
+                    <label>Enter College Name :</label>
+                    <br>
+                    <input type="text" id="ECN">
+                    <br>
+                    <label>Enter Location :</label>
+                    <br>
+                    <input type="text" id="EL">
+                    <br>
+                    <label>Enter Student's Picture :</label>
+                    <br>
+                    <br>
+                    <input type="file" id="ESP" accept="image/*" onchange="loadImage(event)" onload="show()">
+                </form>
+                <br>
+                <span class="content1">
+                    <span class="main-image1">
+                        <img src="" id="imgDisplayed1" onload="show()">
+                    </span>
+                </span>
+                <br>
+                <button type="submit" id="preview" onclick="prev()">Generate Card</button>
+            </div>
+
+            <div class="flex-child green">
+                <div class="card" id="result">
+
+                    <div id="camp">
+                        <h4>Generated ID Card</h4>
+                    </div>
+
+
+                    <div class="content">
+                        <div class="main-image">
+                            <img src="" id="imgDisplayed">
+                        </div>
+
+                        <div class="data-gen">
+                            <div class="headline">
+                                <h1 style="color: gray;">Name :</h1>
+                                <p id="name"></p>
+                            </div>
+                            <div class="headline">
+                                <h1 style="color: gray;">College Name :</h1>
+                                <p id="collegename"></p>
+                            </div>
+                            <div class="headline">
+                                <h1 style="color: gray;">Location :</h1>
+                                <p id="location"></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function show() {
+            var data = document.getElementById("ESP").value;
+            document.getElementById("imageDisplayed1")
+        }
+
+
+
+        const canvas = document.getElementById("result");
+        const preview = document.getElementById("preview");
+        preview.addEventListener("click", prev);
+
+
+
+        var image = document.getElementById("imgDisplayed");
+        const image1 = document.getElementById("imgDisplayed1");
+
+
+
+        function prev() {
+
+            let EN = document.getElementById("EN").value;
+            let ECN = document.getElementById("ECN").value;
+            let EL = document.getElementById("EL").value;
+            let ESP = document.getElementById("ESP").value
+
+
+            const name = document.getElementById("name");
+            const collegename = document.getElementById("collegename");
+            const location = document.getElementById("location");
+            const imgDisplayed = document.getElementById("imagDisplayed");
+
+
+            name.innerHTML = EN;
+            collegename.innerHTML = ECN;
+            location.innerHTML = EL;
+            imgDisplayed.innerHTML = ESP;
+
+
+        }
+
+
+        function loadImage(event) {
+            const image = document.getElementById("imgDisplayed1");
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
