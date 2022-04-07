@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Quote</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        h2 {
+            margin-top: 150px;
+            color: white;
+        }
+
+        .wrapper {
+            width: 605px;
+            background-color: white;
+            border-radius: 10px;
+            margin-top: 25px;
+            margin-left: 250px;
+            padding: 30px 30px 25px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        button {
+
+
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            -webkit-transition-duration: 0.4s;
+            /* Safari */
+            transition-duration: 0.4s;
+
+        }
+
+        button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</head>
+
+<body style="text-align: center;">
+    <h2 id="start"></h2>
+    <div class="wrapper">
+        <header id="start"></header>
+        <i class="fa-solid fa-quote-left"></i>
+        <h4 id="joo"> "The way to get started is to quit talking and begin doing. -Walt Disney"</h4>
+        <i class="fa-solid fa-quote-right"></i>
+        <button onclick="newQuote()" id="btn">New Quote</button>
+    </div>
+
+    <script>
+        var data = ["The greatest glory in living lies not in never falling, but in rising every time we fall. -Nelson Mandel",
+            "The way to get started is to quit talking and begin doing. -Walt Disney", "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma which is living with the results of other people's thinking. -Steve Jobs", "If life were predictable it would cease to be life, and be without flavor. -Eleanor Roosevelt", "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough. -Oprah Winfrey",
+            "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success. -James Cameron", "Life is what happens when you're busy making other plans. -John Lennon", "Spread love everywhere you go. Let no one ever come to you without leaving happier. -Mother Teresa", "When you reach the end of your rope, tie a knot in it and hang on. -Franklin D. Roosevelt", "Always remember that you are absolutely unique. Just like everyone else. -Margaret Mead", "Don't judge each day by the harvest you reap but by the seeds that you plant. -Robert Louis Stevenson"]
+        var colors = ["red", "green", "yellow", "brown", "blue", "pink", "cornflowerblue", "white", "black", "coral"]
+        var num = Math.floor(Math.random() * (data.length));
+        function newQuote() {
+            document.getElementById("joo").innerHTML = data[num];
+            console.log("working");
+
+            var ind = Math.floor(Math.random() * 11);
+            document.body.style.backgroundColor = colors[num];
+            document.getElementById('btn').style.backgroundColor = colors[num];
+            document.getElementById("joo").style.color = colors[num];
+        }
+        var day = new Date();
+        var hours = day.getHours()
+
+        var text;
+
+        if (hours > 5 && hours < 12) {
+            text = "morning";
+        } else if (hours > 12 && hours < 17) {
+            text = "afternoon";
+        } else {
+            text = "evening";
+        }
+        document.getElementById("start").innerHTML = "Let's start our " + text + " with a new  quote";
+
+        console.log(colors[num]);
+    </script>
+</body>
+
+</html>
